@@ -1,0 +1,59 @@
+---
+
+# k8s master: Apertura de reglas en el firewall
+
+# API Server
+- name: firewall - puerto 6443/TCP
+  firewalld:
+    port: 6443/tcp
+    permanent: yes
+    state: enabled
+  become: yes
+
+# etcd server client API
+- name: firewall - puertos 2379-2380/TCP
+  firewalld:
+    port: 2379-2380/tcp
+    permanent: yes
+    state: enabled
+  become: yes
+
+# Kubelet API
+- name: firewall - puerto 10250/TCP
+  firewalld:
+    port: 10250/tcp
+    permanent: yes
+    state: enabled
+  become: yes
+
+# kube-scheduler
+- name: firewall - puerto 10251/TCP
+  firewalld:
+    port: 10251/tcp
+    permanent: yes
+    state: enabled
+  become: yes
+
+# kube-controller-manager
+- name: firewall - puerto 10252/TCP
+  firewalld:
+    port: 10252/tcp
+    permanent: yes
+    state: enabled
+  become: yes
+
+# Statistics
+- name: firewall - puerto 10255/TCP
+  firewalld:
+    port: 10255/tcp
+    permanent: yes
+    state: enabled
+  become: yes
+
+# Reload del servicio para aplicar cambios
+- name: reload service firewalld
+  systemd:
+    name: firewalld
+    state: reloaded
+  become: yes
+

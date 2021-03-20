@@ -1,0 +1,52 @@
+---
+
+# Usuario administrador de k8s: kubeadmin
+
+# Creación de grupo kubeadmin
+- name: Grupo kubeadmin
+  group:
+    name: kubeadmin
+    state: present
+  become: yes
+
+# Creación del usuario kubeadmin
+- name: Creación de usuario administrador kubeadmin
+  user:
+    name: kubeadmin
+    comment: Usuario administrador
+    groups: kubeadmin
+    shell: /bin/bash
+  become: yes
+
+# Configuración para acceso con clave pública ssh
+- name: Habilitación de acceso con clave pública SSH
+  authorized_key: user=kubeadmin key="{{item}}"
+  with_file:
+    - /home/useradmin/.ssh/authorized_keys
+  become: yes
+
+# Configuración para acceso a k8s
+- name: Creación de directorio /home/kubeadmin/.kube
+  file:
+    path: /home/kubeadmin/.kube
+    state: directory
+  become: yes
+
+- name: Copia de configuración para acceso a k8s
+  command: '/bin/cp -f /etc/kubernetes/admin.conf /home/kubeadmin/.kube/config'
+  become: yes
+
+- name: Ajuste de permisos de .kube
+  command: '/bin/chown -R kubeadmin. /home/kubeadmin/.kube'
+  become: yes
+
+# Habilitación de permisos de sudo para el usuario kubeadmin
+- name: Pemisos de sudo sin password para el grupo kubeadmin
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^%kubeadmin'
+    line: '%kubeadmin ALL=(ALL) NOPASSWD: ALL'
+    validate: 'visudo -cf %s'
+  become: yes
+

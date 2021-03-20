@@ -1,0 +1,6 @@
+---
+
+# Esta variable se actualiza dinámicamente desde el script k8s_install.sh, no es necesario modificarla
+# POR RAZONES DE SEGURIDAD LOS TOKENS NO SON VÁLIDOS
+kubeadmjoin: '/usr/bin/kubeadm join 192.168.100.243:6443 --token 8snkap.l3w86ulemn5tu0rc 
+    --discovery-token-ca-cert-hash sha256:d0ed2fa488b5ec4cb1e420f5efa55188a737779ac77ff61f00a68036ffebf6cb '

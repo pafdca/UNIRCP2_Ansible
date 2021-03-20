@@ -1,0 +1,9 @@
+---
+
+# Aplicación con imagen modificada
+- include_tasks: 01-deploy_2048_game_modified.yaml
+# Dashboard
+- include_tasks: 02-deploy_dashboard.yaml
+# Jenkins con almacenamiento persistente
+- include_tasks: 03-deploy_jenkins.yaml
+

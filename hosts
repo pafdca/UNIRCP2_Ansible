@@ -1,0 +1,16 @@
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
+ansible_user=useradmin
+
+[master]
+192.168.1.110 # master.acme.es
+
+[nfs]
+192.168.1.115 # nfs.acme.es
+
+[workers]
+192.168.1.111 # worker01.acme.es
+192.168.1.112 # worker02.acme.es
+
+[controller]
+192.168.1.116 # controller.acme.es

@@ -1,0 +1,12 @@
+---
+  
+# Paquetes a instalar
+nfsserver_rpms: ['nfs-utils', 'net-tools']
+
+# Clientes NFS autorizados
+nfs_clients: [
+             '192.168.1.110',
+             '192.168.1.111',
+             '192.168.1.112'
+             ]
+

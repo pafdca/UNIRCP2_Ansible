@@ -1,0 +1,8 @@
+---
+
+# Despliegue de Jenkins
+# Las definiciones se cargan desde repositorio personal de GitHub,
+# Se definen PV y PVC para almacenamiento persistente
+- name: Desplegue de Jenkins
+  shell: "/usr/bin/kubectl apply -f https://raw.githubusercontent.com/pafdca/UNIRCP2_Ansible/master/deploy/jenkins.yaml"
+  become: yes

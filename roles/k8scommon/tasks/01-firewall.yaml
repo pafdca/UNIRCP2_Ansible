@@ -1,0 +1,39 @@
+---
+
+# Firewall: Configuraciones comunes para k8s
+
+- name: carga modulo br_netfilter
+  modprobe:
+    name: br_netfilter
+    state: present
+  become: yes
+
+- name: firewall - transparent masquerading
+  firewalld:
+    masquerade: yes
+    state: enabled
+    permanent: yes
+  become: yes
+
+- name: firewall - puerto 8285/UDP
+  firewalld:
+    zone: public
+    port: 8472/udp
+    permanent: yes
+    state: enabled
+  become: yes
+
+- name: firewall - puerto 8472/UDP
+  firewalld:
+    zone: public
+    port: 8472/udp
+    permanent: yes
+    state: enabled
+  become: yes
+
+- name: reload service firewalld
+  systemd:
+    name: firewalld
+    state: reloaded
+  become: yes
+

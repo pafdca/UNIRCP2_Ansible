@@ -1,0 +1,25 @@
+---
+
+# k8s: configuración de repositorio de paquetes
+
+- name: creacion de fichero con repositorio de k8s
+  file:
+    path: "/etc/yum.repos.d/kubernetes.repo"
+    state: touch
+    mode: 0644
+    owner: root
+  become: yes
+
+- name: configuracion de repositorio k8s
+  blockinfile: |
+    dest=/etc/yum.repos.d/kubernetes.repo
+    content="[kubernetes]
+    name=Kubernetes
+    baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+    enabled=1
+    gpgcheck=1
+    repo_gpgcheck=1
+    gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+    exclude=kubelet kubeadm kubectl"
+  become: yes
+

@@ -1,0 +1,16 @@
+---
+
+# Instalación de paquetes de sistema
+
+- name: install packages
+  dnf:
+    name: "{{ rpms }}"
+    state: latest
+  become: yes
+
+- name: install dive
+  dnf:
+    name: "{{ dive_rpm }}"
+    state: present
+    disable_gpg_check: yes
+  become: yes

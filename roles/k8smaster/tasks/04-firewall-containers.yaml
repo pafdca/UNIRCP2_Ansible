@@ -1,0 +1,13 @@
+---
+
+# Apertura de reglas de firewall para acceso a red de contenedores
+- name: firewall - permitir acceso de contenedores a localhost
+  shell: "/usr/bin/firewall-cmd --zone=public --permanent --add-rich-rule \'rule family=ipv4 source address=172.17.0.0/16 accept\'"
+  become: yes
+
+- name: reload service firewalld
+  systemd:
+    name: firewalld
+    state: reloaded
+  become: yes
+

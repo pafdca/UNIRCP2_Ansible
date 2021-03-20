@@ -1,0 +1,8 @@
+---
+
+- include_tasks: 01-firewall_k8sservices.yaml
+- include_tasks: 02-kubeadmconfig.yaml
+- include_tasks: 03-firewall_workers.yaml
+- include_tasks: 04-firewall-containers.yaml
+- include_tasks: 05-CNI.yaml
+- include_tasks: 06-createadminuser.yaml

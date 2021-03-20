@@ -1,0 +1,8 @@
+---
+
+- include_tasks: 01-firewall.yaml
+- include_tasks: 02-k8ssysctl.yaml
+- include_tasks: 03-swapoff.yaml
+- include_tasks: 04-docker.yaml 
+- include_tasks: 05-k8srepo.yaml
+- include_tasks: 06-k8sinstall.yaml

@@ -1,0 +1,10 @@
+---
+
+- include_tasks: 01-repositories.yaml
+- include_tasks: 02-rpms.yaml
+- include_tasks: 03-services.yaml
+- include_tasks: 04-update.yaml
+- include_tasks: 05-timezone.yaml
+- include_tasks: 06-ntp.yaml
+- include_tasks: 07-disableselinux.yaml
+- include_tasks: 08-hosts.yaml

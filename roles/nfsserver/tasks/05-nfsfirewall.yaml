@@ -1,0 +1,32 @@
+---
+
+# NFS: Habilitación de reglas necesarias en el firewall
+
+- name: firewall - servicio NFS
+  firewalld:
+    service: nfs
+    permanent: yes
+    state: enabled
+  become: yes
+
+- name: firewall - servicio rpc-bind
+  firewalld:
+    service: rpc-bind
+    permanent: yes
+    state: enabled
+  become: yes
+
+- name: firewall - servicio mountd
+  firewalld:
+    service: mountd
+    permanent: yes
+    state: enabled
+  become: yes
+
+# Reinicio de servicio de firewall
+- name: reload service firewalld
+  systemd:
+    name: firewalld
+    state: reloaded
+  become: yes
+

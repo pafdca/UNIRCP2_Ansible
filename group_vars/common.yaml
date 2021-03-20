@@ -1,0 +1,23 @@
+---
+
+# Paquetes comunes a instalar en todas las máquinas
+rpms: ['chrony', 'bind-utils', 'nmap', 'dnf-plugins-core', 'elinks', 'net-tools', 'jq', 'nfs-utils', 'nfs4-acl-tools', 'wget']
+
+# Servicios comunes a habilitar en todas las máquinas
+services: ['chronyd', 'firewalld']
+
+# Repositorio EPEL
+epel_repo: 'https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm'
+
+# Paquete para Dive
+dive_rpm: 'https://github.com/wagoodman/dive/releases/download/v0.9.2/dive_0.9.2_linux_amd64.rpm'
+
+# Entradas /etc/hosts comunes a todas las máquinas
+etc_hosts: [
+       '192.168.1.110 master master.acme.es game.bar jenkins',
+       '192.168.1.111 worker01 worker01.acme.es',
+       '192.168.1.112 worker02 worker02.acme.es',
+       '192.168.1.115 nfs nfs.acme.es',
+       '192.168.1.116 controller controller.acme.es'
+       ]
+

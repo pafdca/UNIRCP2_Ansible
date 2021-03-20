@@ -1,0 +1,18 @@
+---
+
+# Habilitación de reglas necesarios para permitir acceso a los workers
+
+- name: firewall - permitir acceso a worker1
+  shell: "/usr/bin/firewall-cmd --permanent --add-rich-rule \'rule family=ipv4 source address=192.168.1.111/32 accept\'"
+  become: yes
+
+- name: firewall - permitir acceso a worker2
+  shell: "/usr/bin/firewall-cmd --permanent --add-rich-rule \'rule family=ipv4 source address=192.168.1.112/32 accept\'"
+  become: yes
+
+- name: reload service firewalld
+  systemd:
+    name: firewalld
+    state: reloaded
+  become: yes
+

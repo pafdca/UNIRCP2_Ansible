@@ -1,0 +1,16 @@
+---
+
+# k8s: instalación de paquetes y arranque de servicio kubelet
+
+- name: instalacion de kubernetes
+  shell: '/usr/bin/dnf install -y kubelet kubeadm kubectl --disableexcludes=kubernetes'
+  become: yes
+
+- name: arranque de servicio kubelet
+  systemd:
+    name: kubelet
+    state: started
+    enabled: yes
+    masked: no
+  become: yes
+

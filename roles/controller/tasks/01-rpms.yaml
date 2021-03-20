@@ -1,0 +1,15 @@
+---
+
+# Instalación de paquetes para probar las aplicaciones desde el controller
+
+- name: instalación de xorg-x11-xauth.x86_64 para la exportación del display
+  dnf:
+    name: "xorg-x11-xauth.x86_64"
+    state: present
+  become: yes
+
+- name: instalación de firefox para probar las aplicaciones desplegadas
+  dnf:
+    name: "firefox"
+    state: present
+  become: yes

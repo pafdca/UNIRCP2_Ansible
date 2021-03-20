@@ -1,0 +1,26 @@
+---
+
+# k8s worker: Habilitación de reglas de firewall
+
+- name: firewall - puerto 10250/TCP
+  firewalld:
+    zone: public
+    port: 10250/tcp
+    permanent: yes
+    state: enabled
+  become: yes
+
+- name: firewall - puertos 30000-32767/TCP
+  firewalld:
+    zone: public
+    port: 30000-32767/tcp
+    permanent: yes
+    state: enabled
+  become: yes
+
+- name: reload service firewalld
+  systemd:
+    name: firewalld
+    state: reloaded
+  become: yes
+
